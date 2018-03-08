@@ -15,7 +15,7 @@ jobs:
     - stage: Docker Build
       script:
         - docker login -u $DOCKER_USER -p $DOCKER_PASS
-        - export REPO=$TRAVIS_REPO_SLUG
+        - export REPO=`echo "$TRAVIS_REPO_SLUG" | awk '{print tolower($0)}'`
         - export TYPE=`if [ "$TRAVIS_EVENT_TYPE" == "pull_request" ]; then echo "pr"; else echo "travis" ; fi`
         - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
         - docker build -f Dockerfile -t $REPO:$COMMIT .
