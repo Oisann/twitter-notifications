@@ -11,9 +11,12 @@
     "url": "https://github.com/Oisann/twitter-notifications.git"
   },
   "author": "Oisann",
-  "license": "WTFPL",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/Oisann/twitter-notifications/issues"
   },
-  "homepage": "https://github.com/Oisann/twitter-notifications"
+  "homepage": "https://github.com/Oisann/twitter-notifications",
+  "dependencies": {
+    "twitter-stream-api": "^0.5.2"
+  }
 }
