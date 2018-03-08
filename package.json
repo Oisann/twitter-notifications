@@ -1,0 +1,19 @@
+{
+  "name": "twitter-notifications",
+  "version": "1.0.0",
+  "description": "Sends relevant tweets to (a) webhook(s) based on filters.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Oisann/twitter-notifications.git"
+  },
+  "author": "Oisann",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/Oisann/twitter-notifications/issues"
+  },
+  "homepage": "https://github.com/Oisann/twitter-notifications"
+}
