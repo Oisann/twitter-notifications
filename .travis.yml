@@ -12,19 +12,15 @@ language: node_js
 
 jobs:
   include:
-    - stage: Docker Setup
+    - stage: Docker Build
       script:
         - docker login -u $DOCKER_USER -p $DOCKER_PASS
         - export REPO=$TRAVIS_REPO_SLUG
         - export TYPE=`if [ "$TRAVIS_EVENT_TYPE" == "pull_request" ]; then echo "pr"; else echo "travis" ; fi`
         - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
-    - stage: Docker Build
-      script:
         - docker build -f Dockerfile -t $REPO:$COMMIT .
         - docker tag $REPO:$COMMIT $REPO:$TAG
         - docker tag $REPO:$COMMIT $REPO:$TYPE-$TRAVIS_BUILD_NUMBER
-    - stage: Deploy docker image
-      script:
         - docker push $REPO
-    - stage: Test inside docker file
-      script: docker run --rm $REPO:$TYPE-$TRAVIS_BUILD_NUMBER npm test
+#    - stage: Test inside docker file
+#      script: docker run --rm $REPO:$TYPE-$TRAVIS_BUILD_NUMBER npm test
